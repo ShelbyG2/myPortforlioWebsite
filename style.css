@@ -13,6 +13,7 @@ body {
   background-repeat: no-repeat;
   filter: brightness(0.8); /* Adjust the value to reduce brightness */
   height: 100vh;
+  overflow: hidden;
 }
 
 nav {
@@ -64,10 +65,11 @@ img:hover {
   filter: drop-shadow(10px 5px 10px #ffffff);
 }
 .text-container {
-  background-color: #ff7a06a0;
+  background-color: #ff7a06e9;
   margin: 1em;
   width: 25em;
-  color: #000000;
+
+  border-radius: 10px;
 }
 h1 {
   margin: 0;
@@ -78,4 +80,20 @@ p {
 p,
 h1 {
   padding: 0.3em;
+}
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 3em;
+    width: 100vw;
+  }
+
+  h1 {
+  }
+  .text-container {
+    height: 70vh;
+  }
+  img {
+    height: 50vh;
+  }
+  /* Add more styles as needed for mobile view */
 }
