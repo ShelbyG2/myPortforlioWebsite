@@ -7,7 +7,6 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
 }
 body {
   background-color: rgb(28, 28, 29);
@@ -15,6 +14,7 @@ body {
   color: aliceblue;
   margin: 0;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 nav {
   background-color: rgb(35, 35, 35);
@@ -23,7 +23,7 @@ nav {
   padding: 0;
   position: fixed;
   top: 0;
-  display: absolute;
+  display: flex;
   z-index: 3;
 }
 ul {
@@ -32,10 +32,11 @@ ul {
 .main-nav {
   display: none;
   flex-direction: row;
-  width: 100%;
+  width: 100vw;
   height: 7vh;
   align-items: center;
   justify-content: flex-end;
+  padding-right: 4em;
 }
 .main-nav li {
   margin-left: 2em;
@@ -98,19 +99,20 @@ main {
 #page3,
 #page4,
 #page5 {
+  padding-top: 7vh;
   height: 100vh;
-  border-bottom: 1px solid white;
+
   width: 100%;
 }
 #page1 {
   display: flex;
   flex-direction: column;
-}
-#page2,
-#page3,
-#page4,
-#page5 {
-  padding-top: 7vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  padding: 1em;
 }
 
 section {
@@ -137,7 +139,7 @@ section p {
 .animated-text span::before {
   content: "";
   color: orangered;
-  animation: words 10s infinite;
+  animation: words 5s linear infinite;
 }
 .animated-text span::after {
   position: absolute;
@@ -156,10 +158,11 @@ section p {
 }
 @keyframes words {
   0%,
-  40% {
+  50% {
     content: "Njenga Joseph";
   }
-  41%,
+
+  51%,
   100% {
     content: "a Frontend Developer";
   }
@@ -203,8 +206,7 @@ aside {
   border-radius: 50%;
   transition: 80ms ease-in;
 }
-#profile-pic :hover {
-}
+
 aside svg:hover {
   transform: scale(1.1);
 }
@@ -212,6 +214,7 @@ aside svg:hover {
 #linkedin-icon,
 #twitter-icon,
 #instagram-icon {
+  fill: #fff;
   transition: 1s ease;
 }
 
@@ -242,29 +245,34 @@ aside svg:hover {
   border-radius: 10px;
 }
 article {
-  margin-top: 2em;
-  height: 100%;
+  text-align: center;
+}
+article h2 {
+  font-size: 2em;
+  margin-top: 1em;
 }
 /* glowing button */
 article a {
   margin-top: 2em;
-  margin-left: 2em;
+
   text-decoration: none;
   color: inherit;
   position: absolute;
+  left: 45%;
   display: inline-block;
-  padding: 10px 30px;
+  padding: 10px 20px;
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: cyan;
+  color: orangered;
   transition: 0.5s;
   overflow: hidden;
 }
 article a:hover {
-  background: cyan;
+  background: orangered;
   color: #000;
   border-radius: 5px;
-  box-shadow: 0 0 5px cyan, 0 0 25px cyan, 0 0 50px cyan, 0 0 200px cyan;
+  box-shadow: 0 0 5px orangered, 0 0 25px orangered, 0 0 50px orangered,
+    0 0 200px orangered;
   -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
 }
 article a span {
@@ -276,7 +284,7 @@ article a span:nth-child(1) {
   left: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, cyan);
+  background: linear-gradient(90deg, transparent, orangered);
   animation: animate1 1s linear infinite;
 }
 @keyframes animate1 {
@@ -293,7 +301,7 @@ article a span:nth-child(2) {
   right: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, cyan);
+  background: linear-gradient(180deg, transparent, orangered);
   animation: animate2 1s linear infinite;
   animation-delay: 0.5s;
 }
@@ -311,7 +319,7 @@ article a span:nth-child(3) {
   right: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(270deg, transparent, cyan);
+  background: linear-gradient(270deg, transparent, orangered);
   animation: animate3 1s linear infinite;
 }
 @keyframes animate3 {
@@ -328,7 +336,7 @@ article a span:nth-child(4) {
   left: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(360deg, transparent, cyan);
+  background: linear-gradient(360deg, transparent, orangered);
   animation: animate4 1s linear infinite;
   animation-delay: 0.5s;
 }
@@ -344,32 +352,57 @@ article a span:nth-child(4) {
 /* end of glowing button */
 
 #page2 {
-  font-size: 1em;
-  color: antiquewhite;
 }
+
+#card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  padding: 1em;
+}
+.card {
+  background-color: rgb(35, 35, 35);
+  border-radius: 10px;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  padding: 1em;
+  transition: 0.5s ease;
+  animation: appear linear;
+  animation-timeline: view();
+  animation-range: entry 0% 100%;
+}
+
+.card:hover {
+  transform: rotateY(180deg);
+  content: "Click to flip";
+}
+
 #page3 {
 }
 #page4 {
 }
 #page5 {
 }
-@media screen and (min-width: 767px) and (max-width: 1200px) {
+@media screen and (min-width: 767px) {
   .main-nav {
     display: flex;
   }
   nav svg path {
     display: none;
   }
-
   #mobile-nav,
   #menu-icon {
     display: none;
   }
   #page1 {
     flex-direction: column;
-
     text-align: center;
-    height: 100%;
     height: 100vh;
   }
 }
@@ -377,23 +410,11 @@ article a span:nth-child(4) {
 @media screen and (min-width: 1201px) {
   body {
     font-size: 1.2em;
-  }
-  .main-nav {
-    display: flex;
-  }
-  #menu-icon {
-    display: none;
-  }
-  #mobile-nav {
-    display: none;
+    width: 100w;
   }
   #page1 {
-    flex-direction: column;
     display: flex;
-    text-align: center;
-    height: 100vh;
   }
-
   section,
   aside {
     width: 40%;
