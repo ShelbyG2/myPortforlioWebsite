@@ -1,9 +1,9 @@
 const menubar = document.getElementById("menu-icon");
-const menu = document.getElementById("mobile-nav"); // Changed from "mobile-menu" to "mobile-nav"
+const menu = document.getElementById("mobile-nav");
 const close = document.getElementById("close-icon");
 
 menubar.addEventListener("click", () => {
-  menu.style.display = "flex"; // Changed from "block" to "flex"
+  menu.style.display = "flex";
   menubar.style.display = "none";
   close.style.display = "block";
 });
