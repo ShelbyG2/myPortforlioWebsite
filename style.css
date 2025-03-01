@@ -24,6 +24,11 @@ a {
   text-decoration: none;
   color: inherit;
 }
+#mylogo {
+  height: 50px;
+  width: auto;
+  margin: 0;
+}
 
 nav {
   background-color: rgb(35, 35, 35);
